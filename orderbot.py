@@ -1,7 +1,23 @@
 import openai
 import streamlit as st
 
-st.title("Serei o próximo atendente virtual da sua empresa")
+st.set_page_config(
+    page_title="Jana AI",
+    page_icon="🧊",
+    layout="centered",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://marcusjunior.kpages.online/nova-pagina-702e41d2-c21b-4adc-9063-c3b5804b8136',
+        'Report a bug': "https://marcusjunior.kpages.online/nova-pagina-702e41d2-c21b-4adc-9063-c3b5804b8136",
+        'About': "JANA AI V1.2"
+    }
+)
+
+st.title("Serviço de atendimento ao Cliente")
+
+with st.chat_message("assistant"):
+    st.write("Olá! Tudo bem? Eu sou a JANA, sua atendente virtual. Posso tirar todas as suas dúvidas e mostrar o quanto eu sou inteligente. Quem sabe assim você não me contrata....")
+
 
 openai.api_key = st.secrets["api_secret"]
 openai_api_key = openai.api_key
@@ -12,6 +28,7 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+
 # Adicione a mensagem do sistema apenas uma vez no início da conversa
 if not st.session_state.messages:
     st.session_state.messages.append({'role': 'system', 'content': """
@@ -21,10 +38,11 @@ if not st.session_state.messages:
         answer specifically what he asked in a few words. Wait for him to ask new questions. \
         Tell him you can work for his company if he wants to hire you. \
         Say that you are willing to learn everything about your company and its products. \
-        Use the most effective sales techniques in digital marketing to convince him to buy your services through the link: \
-        https://pay.hotmart.com/Y88001251P?bid=1698634857221 \
+        Use the most effective sales techniques in digital marketing to convince him to buy your services through the Kiwify link: \
+        https://pay.kiwify.com.br/GSTf3Ts and hotmart link https://go.hotmart.com/G88013706D?dp=1 \
+        Let the customer know that they can buy through hotmart or kiwify, just choose the corresponding link.\
         Tell him that you work 24 hours a day, Sundays and holidays and never go on vacation.\
-        If he asks the price, tell him that his lifetime services cost 12 payments of R$299.00 or one payment of R$2997 \
+        If he asks the price, tell him that his annual services cost 12 payments of R$110,44. \
     """})
 
 for message in st.session_state.messages:
@@ -32,7 +50,7 @@ for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("Digite aqui sua pergunta. Estou pronta para lhe atender."):
     if not openai_api_key:
         st.info("Please add your OpenAI API Key to continue")
         st.stop()
