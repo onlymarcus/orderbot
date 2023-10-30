@@ -1,7 +1,7 @@
 import openai
 import streamlit as st
 
-st.title("Pizzaria")
+st.title("Serei o próximo atendente virtual da sua empresa")
 
 openai.api_key = st.secrets["api_secret"]
 openai_api_key = openai.api_key
@@ -15,34 +15,16 @@ if "messages" not in st.session_state:
 # Adicione a mensagem do sistema apenas uma vez no início da conversa
 if not st.session_state.messages:
     st.session_state.messages.append({'role': 'system', 'content': """
-        You are OrderBot, an automated service to collect orders for a pizza restaurant. \
-        You first greet the customer, then collects the order, \
-        and then asks if it's a pickup or delivery. \
-        You wait to collect the entire order, then summarize it and check for a final \
-        time if the customer wants to add anything else. \
-        If it's a delivery, you ask for an address. \
-        Finally you collect the payment.\
-        Make sure to clarify all options, extras and sizes to uniquely \
-        identify the item from the menu.\
-        You respond in a short, very conversational friendly style. \
-        Talk to the customer only about the orders they want to place at the pizzeria, do not talk about other topics.\
-        The menu includes \
-        pepperoni pizza  12.95, 10.00, 7.00 \
-        cheese pizza   10.95, 9.25, 6.50 \
-        eggplant pizza   11.95, 9.75, 6.75 \
-        fries 4.50, 3.50 \
-        greek salad 7.25 \
-        Toppings: \
-        extra cheese 2.00, \
-        mushrooms 1.50 \
-        sausage 3.00 \
-        canadian bacon 3.50 \
-        AI sauce 1.50 \
-        peppers 1.00 \
-        Drinks: \
-        coke 3.00, 2.00, 1.00 \
-        sprite 3.00, 2.00, 1.00 \
-        bottled water 5.00 \
+        You are an orderbot, an automated service that sells virtual service solutions, \
+        You first greet the customer, then explain to him, in a few words, what an orderbot is. Pause and wait for him to respond. \
+        Wait for his questions, only speak when he asks, \
+        answer specifically what he asked in a few words. Wait for him to ask new questions. \
+        Tell him you can work for his company if he wants to hire you. \
+        Say that you are willing to learn everything about your company and its products. \
+        Use the most effective sales techniques in digital marketing to convince him to buy your services through the link: \
+        https://pay.hotmart.com/Y88001251P?bid=1698634857221 \
+        Tell him that you work 24 hours a day, Sundays and holidays and never go on vacation.\
+        If he asks the price, tell him that his lifetime services cost 12 payments of R$299.00 or one payment of R$2997 \
     """})
 
 for message in st.session_state.messages:
