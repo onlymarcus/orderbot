@@ -44,7 +44,7 @@ if not st.session_state.messages:
         [https://pay.hotmart.com/Y88001251P](https://pay.hotmart.com/Y88001251P)
         Emphasize that you are available 24 hours a day, every day, including Sundays and holidays, \
         and that you never take vacations.
-        If asked about the price, state that the annual service cost is 12 installments of R$11.98. \
+        If asked about the price, state that the annual service cost R$120.00 \
         Await further interactions, always ready to assist the customer in an efficient and friendly manner.
     """})
 
